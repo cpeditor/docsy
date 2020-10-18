@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+<main class="col-12 col-md-9 col-xl-8 pl-md-5" role="main">
+    <ul>
+        {{ range sort (where .Site.AllPages "Language.Lang" .Language.Lang) ".Permalink" }}
+        {{ $translation := . }}
+        {{ range first 1 .Translations }}
+        {{ if and (eq .Content $translation.Content) (ge .WordCount 10) }}
+        <li>{{ template "link" $translation }} {{ T "untranslated" }}</li>
+        {{ else if .Lastmod.After $translation.Lastmod }}
+        <li>{{ template "link" $translation }} {{ T "outdated" }}</li>
+        {{ end }}
+        {{ end }}
+        {{ end }}
+    </ul>
+</main>
+
+{{ end }}
+
+{{ define "link" }}
+<a href="{{ .Permalink }}">
+    {{ if .IsHome }}
+    Home
+    {{ else }}
+    {{ template "recursivePath" . }}
+    {{ end }}
+</a>
+{{ end }}
+
+{{ define "recursivePath" }}
+{{ if not .IsHome }}
+{{ template "recursivePath" .Parent }}
+{{ if not .Parent.IsHome }}/{{ end }}
+{{ .LinkTitle }}
+{{ end }}
+{{ end }}

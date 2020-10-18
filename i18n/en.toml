@@ -52,3 +52,10 @@ other = "The <a href='{{ .originLink }}'>English version</a> of this page <a hre
 other = "This page hasn't been translated yet."
 [help_translation]
 other = "You can help us <a href='{{ .editURL }}'>translate this page</a>."
+
+
+# Need translation list
+[untranslated]
+other = "(untranslated)"
+[outdated]
+other = "(outdated)"

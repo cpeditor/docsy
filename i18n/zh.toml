@@ -52,3 +52,10 @@ other = "这个页面的 <a href='{{ .originLink }}'>英文版本</a> <a href='{
 other = "这个页面还没有被翻译。"
 [help_translation]
 other = "你可以帮助我们 <a href='{{ .editURL }}'>翻译本页</a>。"
+
+
+# Need translation list
+[untranslated]
+other = "（未翻译）"
+[outdated]
+other = "（需更新）"
