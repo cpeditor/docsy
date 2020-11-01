@@ -12,9 +12,10 @@ Show warnings when:
 {{ if $gh_subdir }}
 {{ $editURL = printf "%s/edit/%s/%s/content/%s" $gh_repo $gh_branch $gh_subdir $pathFormatted }}
 {{ end }}
-{{ $historyURL := printf "%s/commits/%s/content/%s" $gh_repo $gh_branch $pathFormatted }}
+{{ $mainLangPath := path.Join .File.Dir (print .File.TranslationBaseName "." .File.Ext) }}
+{{ $historyURL := printf "%s/commits/%s/content/%s" $gh_repo $gh_branch $mainLangPath }}
 {{ if $gh_subdir }}
-{{ $historyURL = printf "%s/commits/%s/%s/content/%s" $gh_repo $gh_branch $gh_subdir $pathFormatted }}
+{{ $historyURL = printf "%s/commits/%s/%s/content/%s" $gh_repo $gh_branch $gh_subdir $mainLangPath }}
 {{ end }}
 {{ $translation_modified := .Lastmod }}
 {{ $translation_content := .Content }}
