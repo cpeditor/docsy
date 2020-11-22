@@ -17,15 +17,14 @@ Show warnings when:
 {{ if $gh_subdir }}
 {{ $historyURL = printf "%s/commits/%s/%s/content/%s" $gh_repo $gh_branch $gh_subdir $mainLangPath }}
 {{ end }}
-{{ $translation_modified := .Lastmod }}
-{{ $translation_content := .Content }}
+{{ $translation := . }}
 {{ range first 1 .Translations }}
-{{ if and (eq .Content $translation_content) (ge .WordCount 10) }}
+{{ if and (or (eq .Title $translation.Title) (ge .WordCount 10)) (eq .Content $translation.Content) }}
 <div class="pageinfo pageinfo-primary">
     {{ T "unfinished_translation" }}
     {{ T "help_translation" (dict "editURL" $editURL) | safeHTML }}
 </div>
-{{ else if .Lastmod.After $translation_modified }}
+{{ else if .Lastmod.After $translation.Lastmod }}
 <div class="pageinfo pageinfo-primary">
     {{ T "outdated_translation" (dict "originLink" .Permalink "historyURL" $historyURL) | safeHTML }}
     {{ T "help_translation" (dict "editURL" $editURL) | safeHTML }}
