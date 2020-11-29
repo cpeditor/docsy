@@ -59,3 +59,14 @@ other = "你可以帮助我们 <a href='{{ .editURL }}'>翻译本页</a>。"
 other = "（未翻译）"
 [outdated]
 other = "（需更新）"
+
+
+# Print support
+[print_printable_section]
+other = "This the multi-page printable view of this section."
+[print_click_to_print]
+other = "Click here to print"
+[print_show_regular]
+other = "Return to the regular view of this page"
+[print_entire_section]
+other = "Print entire section"
