@@ -19,7 +19,7 @@ Show warnings when:
 {{ end }}
 {{ $translation := . }}
 {{ range first 1 .Translations }}
-{{ if and (or (eq .Title $translation.Title) (ge .WordCount 10)) (eq .Content $translation.Content) }}
+{{ if and (eq .Title $translation.Title) (not $translation.Params.translated) }}
 <div class="pageinfo pageinfo-primary">
     {{ T "unfinished_translation" }}
     {{ T "help_translation" (dict "editURL" $editURL) | safeHTML }}
