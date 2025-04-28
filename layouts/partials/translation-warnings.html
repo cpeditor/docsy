@@ -1,9 +1,9 @@
 <!--
-Show warnings when: 
+Show warnings when:
 1. The translation is modified earlier than the default language version.
 2. The translation is exactly the same as the default language version.
 -->
-{{ if ne .Language .Sites.First.Language }}
+{{ if ne .Language .Sites.Default.Language }}
 {{ $pathFormatted := replace .Path "\\" "/" }}
 {{ $gh_repo := ($.Param "github_repo") }}
 {{ $gh_subdir := ($.Param "github_subdir") }}
